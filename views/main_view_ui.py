@@ -26,8 +26,9 @@ class Ui_MainWindow(object):
         self.label_even_odd.setObjectName("label_even_odd")
         self.vboxlayout.addWidget(self.label_even_odd)
         self.pushButton_reset = QtWidgets.QPushButton(self.centralwidget)
-        self.pushButton_reset.setEnabled(False)
+        self.pushButton_reset.setEnabled(True)
         self.pushButton_reset.setObjectName("pushButton_reset")
+        self.pushButton_reset.setText("Reset")
         self.vboxlayout.addWidget(self.pushButton_reset)
         MainWindow.setCentralWidget(self.centralwidget)
 

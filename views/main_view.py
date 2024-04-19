@@ -14,15 +14,17 @@ class MainView(QMainWindow):
 
         # connect widgets to controller
         self._ui.spinBox_amount.valueChanged.connect(self._main_controller.change_amount)
-        self._ui.pushButton_reset.clicked.connect(lambda: self._main_controller.change_amount(0))
+        self._ui.pushButton_reset.clicked.connect(self._main_controller.reset_amount)
 
         # listen for model event signals
-        self._model.amount_changed.connect(self.on_amount_changed)
-        self._model.even_odd_changed.connect(self.on_even_odd_changed)
-        self._model.enable_reset_changed.connect(self.on_enable_reset_changed)
+        self._main_controller.amount_changed.connect(self.on_amount_changed)
+        self._main_controller.even_odd_changed.connect(self.on_even_odd_changed)
+        self._main_controller.enable_reset_changed.connect(self.on_enable_reset_changed)
 
         # set a default value
-        self._main_controller.change_amount(42)
+        default_value = 41
+        self._ui.spinBox_amount.setValue(default_value)
+        self._main_controller.change_amount(default_value)
 
     @pyqtSlot(int)
     def on_amount_changed(self, value):
